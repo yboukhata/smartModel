@@ -8,8 +8,10 @@ exports['test $attr() return SmartAttribute instance'] = function () {
     var module = {exports: {}};
     // test for standalone attribute files
     assert.ok(smodel.$attr(module, 'name') instanceof smodel.SmartAttribute);
-    // test for embedded attribute definition
-    assert.ok(smodel.$class(module, 'Contact').$attr('name') instanceof smodel.SmartAttribute);
+    
+	// test for embedded attribute definition
+    smodel.$class(module, 'Contact').$attr('name');
+    assert.ok(module.exports.attributes[1] instanceof smodel.SmartAttribute);
 };
 
 exports['test SmartAttribute $attr() name attribute is applied'] = function () {
